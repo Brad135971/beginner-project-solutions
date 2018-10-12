@@ -1,0 +1,52 @@
+user_input = input("Please input g for grams or lbs for pounds: ")
+pennies = float(input("Please input the weight in grams of all your pennies: "))
+nickels = float(input("Please input the weight in grams of all your nickels: "))
+dimes = float(input("Please input the weight in grams of all your dimes: "))
+quarters = float(input("Please input the weight in grams of all your quarters: "))
+
+def coin_calculator(weight):
+    if weight == pennies and user_input == 'g':
+        penny_number = pennies / 2.5
+        penny_wrappers = penny_number/50
+        penny_worth = penny_number/100
+        print("You have approximately %s pennies worth $ %s and will need %s wrappers" % (round(penny_number), round(penny_worth, 2),  round(penny_wrappers)))
+    elif weight == pennies and user_input == 'lbs':
+        penny_number = pennies / (2.5 / 453.592)
+        penny_wrappers = penny_number/50
+        penny_worth = penny_number / 100
+        print("You have approximately %s pennies worth $ %s and will need %s wrappers" % (round(penny_number), round(penny_worth, 2), round(penny_wrappers)))
+    elif weight == nickels and user_input == 'g':
+        nickel_number = nickels / 5
+        nickel_wrappers = nickel_number/40
+        nickel_worth = (nickel_number * 5)/100
+        print("You have approximately %s nickels worth $ %s and will need %s wrappers" % (round(nickel_number), round(nickel_worth, 2), round(nickel_wrappers)))
+    elif weight == nickels and user_input == 'lbs':
+        nickel_number = nickels / (5 / 453.592)
+        nickel_wrappers = nickel_number/40
+        nickel_worth = (nickel_number * 5) / 100
+        print("You have approximately %s nickels worth $ %s and will need %s wrappers" % (round(nickel_number), round(nickel_worth, 2), round(nickel_wrappers)))
+    elif weight == dimes and user_input == 'g':
+        dime_number = dimes / 2.268
+        dime_wrappers = dime_number/50
+        dime_worth = (dime_number * 10) / 100
+        print("You have approximately %s dimes worth $ %s and will need %s wrappers" % (round(dime_number), round(dime_worth, 2), round(dime_wrappers)))
+    elif weight == dimes and user_input == 'lbs':
+        dime_number = dimes / (2.268 / 453.592)
+        dime_wrappers = dime_number/50
+        dime_worth = (dime_number * 10) / 100
+        print("You have approximately %s dimes worth $ %s and will need %s wrappers" % (round(dime_number), round(dime_worth, 2), round(dime_wrappers)))
+    elif weight == quarters and user_input == 'g':
+        quarter_number = quarters / 5.67
+        quarter_wrappers = quarter_number/40
+        quarter_worth = (quarter_number * 25) / 100
+        print("You have approximately %s quarters worth $ %s and will need %s wrappers" % (round(quarter_number), round(quarter_worth, 2), round(quarter_wrappers)))
+    elif weight == quarters and user_input == 'lbs':
+        quarter_number = quarters / (5.67 / 453.592)
+        quarter_wrappers = quarter_number/40
+        quarter_worth = (quarter_number * 25) / 100
+        print("You have approximately %s quarters worth $ %s and will need %s wrappers" % (round(quarter_number), round(quarter_worth, 2), round(quarter_wrappers)))
+
+coin_calculator(pennies)
+coin_calculator(nickels)
+coin_calculator(dimes)
+coin_calculator(quarters)
