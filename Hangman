@@ -1,0 +1,199 @@
+# My version of Hangman
+
+def main():
+
+    import random
+
+    name = input(str("\n \nPlease enter your name: "))
+    print("\n \nYou are a teleport operator for the USS Teleporter.\nYour ship is being invaded by the evil cat people, Meowers.\nIt is up to you to stop them.\n"
+          "You must find the secret code before they can materialize in the teleporter.\nIf you do not find the code in time, the Meowers will materialize and invade your ship.\n"
+          "You must stop them, Ensign %s, you are our only hope." % (name))
+
+    print("            /\\__/\\ " + "             /\\__/\\ ")
+    print("           (=^.^=) " + "            (=^.^=) ")
+    print('           {"}_{"}_/' + '           {"}_{"}_/')
+
+    def cls():
+        print("\n" * 35)
+    def restart_here():
+        wordbank = 0
+        guess = 0
+        random_word = []
+        words = {4 : ["azerbaijan", "barbados", "cameroon", "djibouti", "ecuador", "fiji", "guatemala"],
+                 2 :["enterprise", "vulcan", "klingon", "romulan", "stardate", "quadrant"],
+                 1 :["skywalker", "stormtrooper", "wookie", "lightsaber", "padawan"],
+                 3 :["roman", "greek", "ottoman", "british", "russian", "mongol"]}
+        print("\n \nPlease choose a category number.  1. Star Wars 2. Star Trek 3. Empires 4. Countries: ")
+        user_number = input()
+        while True:
+          try:
+            user_number = int(user_number)
+          except:
+            print("{input} is not a number, please enter a number only".format(input=user_number))
+            user_number = input()
+          else:
+            if 1 <= user_number <= 4:
+              wordbank += user_number
+              break
+            else:
+              print("{input} is not in range, please enter a valid number only".format(input=user_number))
+              user_number = input()
+        print("Ensign %s please choose a level. 1. Impossible 2. Hard 3. Medium 4. Easy" % (name))
+        player_level = input()
+        while True:
+          try:
+            player_level = int(player_level)
+          except:
+            print("{input} is not a number, please enter a number only".format(input=player_level))
+            player_level = input()
+          else:
+            if 1 <= player_level <= 4:
+              guess += player_level * 4
+              break
+            else:
+              print("{input} is not in range, please enter a valid number only".format(input=player_level))
+              player_level = input()
+        def category(wordbank):
+            phrase = ("\nYou have %s guesses to get the secret code before the Meowers invade your ship.  \nGood Luck Ensign %s" %(guess, name))
+
+            if wordbank == 1:
+              print("\n\nYou have chosen the Starwars Category." + str(phrase))
+            elif wordbank == 2:
+              print("\n\nYou have chosen the Star Trek Category." + str(phrase))
+            elif wordbank == 3:
+              print("\n\nYou have chosen the Empires Category." + str(phrase))
+            elif wordbank == 4:
+              print("\n\nYou have chosen the Countries Category." + str(phrase))
+
+        category(wordbank)
+        random_dict = words[wordbank]
+        random_word = random.choice(random_dict)
+        guessed_letters = []
+        player_guess = None
+        word_guessed = []
+        joined_word = None
+
+        for letter in random_word:
+            word_guessed.append("-")
+
+        meower = (
+        "  /\\__/\\ \n "
+        "(=^.^=)  \n"
+        ' {"}_{"}_/',
+        " /\\__/\\ "
+        "(=^.^=) "
+        '{"}_{"}_/',
+        " /\\__/\\ "
+        "(=^.^=) "
+        '{"}_{"}_/',
+        " /\\__/\\ "
+        "(=^.^=) "
+        '{"}_{"}_/',
+        " /\\__/\\ "
+        "(=^.^=) "
+        '{"}_{"}_/',
+        " /\\__/\\ "
+        " (=^.^=) "
+        ' {"}_{"}_/',
+        " /\\__/\\ "
+        "\n        "
+        '\n         ',
+        " /\\__/\\ "
+        "\n(       "
+        '\n         ',
+        " /\\__/\\ "
+        "\n(=      "
+        '\n         ',
+        " /\\__/\\ "
+        "\n(=^      "
+        '\n          ',
+        "  /\\__/\\ "
+        "\n (=^.    "
+        '\n         ',
+        " /\\__/\\ "
+        "\n(=^.^   "
+        '\n        ',
+        " /\\__/\\ "
+        "\n(=^.^=  "
+        '\n         ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n        ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n{       ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n{"      ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n{"}     ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n{"}_    ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n{"}_{   ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n{"}_{"  ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n{"}_{"} ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n{"}_{"}_ ',
+        " /\\__/\\ "
+        "\n(=^.^=) "
+        '\n{"}_{"}_/'
+        )
+        while guess != 0 and "-" in word_guessed:
+          print(meower[(22-guess)])
+          print("\nYou have %s guesses remaining" % (guess))
+          print("Secret Code to stop the Teleporter:")
+          joined_word = "".join(word_guessed)
+          print(joined_word)
+          print("\n")
+          print("Letters guessed: ")
+          print(*guessed_letters, sep=", ")
+          try:
+            player_guess = str(input("\nPlease select a letter between A-Z" + "\n> ")).lower()
+          except:
+            print("That is not valid input. Please try again.")
+            continue
+          else:
+            if not player_guess.isalpha():
+              print("That is not a letter. Please try again.")
+              continue
+            elif len(player_guess) > 1:
+              print("That is more than one letter. Please try again.")
+              continue
+            elif player_guess in guessed_letters:
+              print("You have already guessed that letter. Please try again.")
+              continue
+            else:
+              pass
+          for letter in range(len(random_word)):
+            if player_guess.lower() == random_word[letter]:
+              word_guessed[letter] = player_guess
+              cls()
+          if player_guess not in random_word:
+            guess -= 1
+            guessed_letters.append(player_guess)
+            cls()
+
+        if "-" not in word_guessed:
+            print("Congratulations Ensign %s. \nYou have stopped the evil Meowers. \nToday you, %s, are a true hero." % (name, name))
+        if guess == 0:
+            print("You have failed Ensign %s. \nThe Meowers  invade the USS Teleporter.\nCapture the entire crew.\n"
+                  "And make everyone drink milk out of a saucer!!!\nHow horrible and to think, %s, it is all your fault" % (name, name))
+        restart = input("\n \n \nWould you like to play again? [Y/N]").lower()
+        if restart == 'y':
+          cls()
+          restart_here()
+        else:
+          exit()
+
+    restart_here()
+
+main()
