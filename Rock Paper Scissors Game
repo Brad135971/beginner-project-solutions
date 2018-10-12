@@ -1,0 +1,67 @@
+#Rock Paper Scissors Game
+import random
+
+
+def play_again():
+    again = input('Would you like to play again: [y/n}')
+    if again.lower() == 'y':
+        return True
+    else:
+        quit()
+
+def main():
+    computer_score = 0
+    player_score = 0
+    print("\nWelcome to Rock, Paper, Scissors!! Also known as Roshambo. \nHere you can play against the computer to find out who is the Champion.")
+    while True:
+        computer_choice = random.choice(['rock', 'paper', 'scissors'])
+        user_choice = input('Please pick "Rock", "Paper" or "Scissors":').lower()
+        if user_choice == 'rock':
+            if computer_choice == 'scissors':
+                print("\nPlayer chose %s and computer chose %s.  Player wins" %(user_choice, computer_choice))
+                player_score += 1
+                print("Player Score %s.  Computer Score %s." %(player_score, computer_score))
+                play_again()
+            elif computer_choice == 'paper':
+                print("\nPlayer chose %s and computer chose %s.  Computer wins" % (user_choice, computer_choice))
+                computer_score += 1
+                print("Player Score %s.  Computer Score %s." % (player_score, computer_score))
+                play_again()
+            else:
+                print("\nPlayer chose %s and computer chose %s.  It's a tie" % (user_choice, computer_choice))
+                print("Player Score %s.  Computer Score %s." % (player_score, computer_score))
+                play_again()
+
+        elif user_choice == 'paper':
+            if computer_choice == 'rock':
+                print("\nPlayer chose %s and computer chose %s.  Player wins" % (user_choice, computer_choice))
+                player_score += 1
+                print("Player Score %s.  Computer Score %s." % (player_score, computer_score))
+            elif computer_choice == 'scissors':
+                print("\nPlayer chose %s and computer chose %s.  Computer wins" % (user_choice, computer_choice))
+                computer_score += 1
+                print("Player Score %s.  Computer Score %s." % (player_score, computer_score))
+            else:
+                print("\nPlayer chose %s and computer chose %s.  It's a tie" % (user_choice, computer_choice))
+                print("Player Score %s.  Computer Score %s." % (player_score, computer_score))
+                play_again()
+        elif user_choice == 'scissors':
+            if computer_choice == 'paper':
+                print("\nPlayer chose %s and computer chose %s.  Player wins" % (user_choice, computer_choice))
+                player_score += 1
+                print("Player Score %s.  Computer Score %s." % (player_score, computer_score))
+                play_again()
+            elif computer_choice == 'rock':
+                print("\nPlayer chose %s and computer chose %s.  Computer wins" % (user_choice, computer_choice))
+                computer_score += 1
+                print("Player Score %s.  Computer Score %s." % (player_score, computer_score))
+                play_again()
+            else:
+                print("\nPlayer chose %s and computer chose %s.  It's a tie" % (user_choice, computer_choice))
+                print("Player Score %s.  Computer Score %s." % (player_score, computer_score))
+                play_again()
+        else:
+            print("\nPlease only chose 'Rock', 'Paper', or 'Scissors':")
+            play_again()
+
+main()
