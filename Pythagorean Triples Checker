@@ -1,0 +1,22 @@
+#Pythagorean Triples Checker
+def main(): #Here we get the users input a number for each side of the triangle
+    x = int(input('Please input the side 1 of a triangle:'))
+    y = int(input('Please input the side 2 of a triangle:'))
+    z = int(input('Please input the side 3 of a triangle:'))
+
+    def Pythagorean_Triple(x, y, z): #next we check which value is the biggest, smallest and the one in the middle so the user can enter  in any order.
+        c = max(x, y, z)
+        a = min(x, y, z)
+        b = sorted([x, y, z])[1]
+        if (a ** 2) + (b ** 2) == (c ** 2):# we then use the formula to calculate if it is a Pythagorean Triple and let the user know
+            print("This is a Pythagorean Triple")
+        else:
+            print("This is not a Pythagorean Triple")
+
+    Pythagorean_Triple(x, y, z)# Here we call the function to execute it and input the users variables
+    Again = input('Would you like to enter another Triangle: [Y/N}') #We then check with the user if they have another Triangle to input if yes we restart the program if not we quit the program.
+    if Again.lower() == 'y':
+        main()
+    else:
+        quit()
+main()
