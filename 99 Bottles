@@ -1,0 +1,18 @@
+# 99 Bottles of Beer on the wall project.
+for i in range(99, -1, -1):  # here we loop over a range of 99 to 0 in order to count the bottles down.
+    if i < 3 and i > 1:  # Here we set up our first condition to change bottles to bottle on the last phrase once it reaches one
+        print(
+            "%s bottles of beer on the wall, %s bottles of beer. Take one down and pass it around, %s bottle of beer on the wall. " % (
+            i, i, (i - 1)))
+    elif i < 2 and i > 0:  # Here we set up a second condition if the first is not met, that changes bottles to bottle in the first and second phrase but puts bottles in the last phrase.
+        # This is also the end of the loop so we put a break in to knock us out of the loop.
+        print(
+            "%s bottle of beer on the wall, %s bottle of beer. Take one down and pass it around, %s bottles of beer on the wall. " % (
+            i, i, (i - 1)))
+        break
+    else:  # This is the main  condition that continues looping until our above conditions are met.
+        print(
+            "%s bottles of beer on the wall, %s bottles of beer. Take one down and pass it around, %s bottles of beer on the wall. " % (
+            i, i, (i - 1)))
+
+# This was a fun project and I am going to look at doing several more Brad135971@aol.com
